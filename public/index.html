@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,400i,600"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="dt.css" />
+    <script src="script.js"></script>
+    <title>Game Base</title>
+  </head>
+
+  <body>
+    <div class="side-nav">
+      <a href="#" id="home">Home</a>
+      <a href="#" id="classes">Classes</a>
+      <a href="#" id="accounts">Accounts</a>
+      <a href="#" id="average_rating">Average Rating</a>
+      <a href="#" id="game_list">Game List</a>
+      <a href="#" id="plays">Plays</a>
+      <a href="#" id="reviews">Reviews</a>
+      <a href="#" id="video_games">Video Games</a>
+    </div>
+
+    <div class="main">
+      <!-- Home -->
+      <section id="div-home" class="section">
+        <h2>Game Base - MySQL on Azure</h2>
+      </section>
+
+      <!-- Classes -->
+      <section id="div-classes" class="section">
+        <h2>Classes I'm currently taking</h2>
+        <ol id="class-list">
+          <li>
+            CSS 475: Database Systems <button id="cse475">more info</button>
+          </li>
+        </ol>
+        <p id="class-info"></p>
+      </section>
+
+      <section id="div-database" class="section">
+        <div class="dtContainer">
+          <p id="dtHeader" class="dtHeader"></p>
+          <p></p>
+          <div id="dataTable"></div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

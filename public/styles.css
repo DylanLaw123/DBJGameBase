@@ -1,0 +1,110 @@
+/*
+  Name: Dylan Law
+  Date: April 16, 2020
+  Section: CSE 154 AL
+  This is the styles.css page for my Creative Project 2
+  The CSS includes stuff for my box model, for the .add function and for the sidebar
+*/
+body {
+  font-family: "Roboto", "Helvetica", sans-serif;
+  background-color: rgb(255, 251, 219);
+  margin-left: auto;
+  margin-right: auto;
+  width: 85%;
+}
+
+.close {
+  color: #9b9494;
+  font-size: 25px;
+  font-weight: bold;
+  float: right;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Sections */
+.section {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+/*
+  Side navigation menu
+  ref: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_sidenav
+*/
+.side-nav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(4, 21, 53);
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.side-nav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+.side-nav a:hover {
+  color: #f1f1f1;
+  background-color: #121481;
+}
+
+.main {
+  margin-left: 120px; /* Same width as side-nav */
+  font-size: 20px;
+  padding: 20px;
+}
+
+.active {
+  background-color: rgb(54, 80, 167);
+  color: white;
+}
+
+/* Classes page */
+.class-info-high-light {
+  width: 100%;
+  background-color: rgb(101, 26, 221);
+  color: white;
+  box-sizing: border-box;
+  border-radius: 5%;
+  padding: 20px;
+}
+
+/* Favorites */
+.favorite-img {
+  width: 700px;
+}
+
+/* Ref: https://www.w3schools.com/css/css_rwd_mediaqueries.asp */
+
+@media screen and (max-height: 500px) {
+  .side-nav {
+    padding-top: 14px;
+  }
+
+  .side-nav a {
+    font-size: 16px;
+  }
+}
