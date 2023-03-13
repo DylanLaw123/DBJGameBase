@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'dbjgamebase475'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0385D8E5922044D18990DEA5997AC872 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_034A253E0AFF4E8B893D71D10225DE74 }}
           package: .
