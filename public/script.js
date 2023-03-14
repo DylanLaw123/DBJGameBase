@@ -103,7 +103,7 @@
   function moreClassInfo() {
     let element = id("class-info");
     element.innerText =
-      "This course covers techniques for database design and reporting, as well as database system concepts necessary for implementation and optimization. The first part of the course will cover concepts and techniques useful in database design, reporting, and implementation, including the relational model, relational algebra, Structured Query Language (SQL), entity-relationship modeling, and normalization. The second part of the course will cover object role modeling and the phases of database design methodology (conceptual, logical, and physical). Additional topics, such as transaction management, query processing, and current trends will be addressed as time permits.";
+      "This would link to a page that would have information on account creation";
     element.classList.add("class-info-high-light");
   }
 
