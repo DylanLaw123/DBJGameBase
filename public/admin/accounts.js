@@ -7,23 +7,34 @@
    * This init function will set all event handlers for the dialog and open dialog box
    */
   function init() {
-    addMenuEventListeners();
-    addClassInfoEventListeners();
+    // addMenuEventListeners();
+    // addClassInfoEventListeners();
+    // id("div-database").classList.add("show");
 
-    showContent("div-home");
+    console.log("==== accounts ====");
+    const queryString = window.location.search;
+    console.log(queryString);
+
+    if (queryString) {
+      console.log("==== edit ====");
+      const urlParams = new URLSearchParams(queryString);
+      const Account_id = urlParams.get("Account_id");
+      const Name = urlParams.get("Name");
+      const Date_Created = urlParams.get("Date_Created");
+      const Email = urlParams.get("Email");
+    } else {
+      console.log("==== add ====");
+    }
   }
+
+  function add() {}
+
+  function edit() {}
 
   /**
    * Add all menu event listeners
    */
   function addMenuEventListeners() {
-    id("home").addEventListener(
-      "click",
-      function () {
-        showContent("div-home");
-      },
-      false
-    );
     id("accounts").addEventListener(
       "click",
       function () {
@@ -75,36 +86,15 @@
   }
 
   /**
-   * Add all class info event listeners
-   */
-  function addClassInfoEventListeners() {
-    id("cse475").addEventListener(
-      "click",
-      function () {
-        moreClassInfo();
-      },
-      false
-    );
-  }
-
-  /**
    * Hide all secions including the home section and show the selected section
    * Ref: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_sidenav
    *
    * @param {string} content - The selected element id
    */
   function showContent(content) {
-    id("div-home").classList.remove("show");
     id("div-database").classList.remove("show");
 
     document.getElementById(content).classList.add("show");
-  }
-
-  function moreClassInfo() {
-    let element = id("class-info");
-    element.innerText =
-      "This course covers techniques for database design and reporting, as well as database system concepts necessary for implementation and optimization. The first part of the course will cover concepts and techniques useful in database design, reporting, and implementation, including the relational model, relational algebra, Structured Query Language (SQL), entity-relationship modeling, and normalization. The second part of the course will cover object role modeling and the phases of database design methodology (conceptual, logical, and physical). Additional topics, such as transaction management, query processing, and current trends will be addressed as time permits.";
-    element.classList.add("class-info-high-light");
   }
 
   function renderTable(data, header) {
@@ -137,7 +127,7 @@
   }
 
   async function getAllAccounts() {
-    let url = "/accounts";
+    let url = "/admin/accounts";
     try {
       let res = await fetch(url);
       checkStatus(res);
@@ -156,14 +146,14 @@
   }
 
   async function getAllAverageRating() {
-    let url = "/average_rating";
+    let url = "/admin/average_rating";
     try {
       let res = await fetch(url);
       checkStatus(res);
       let data = await res.json();
       id("dtHeader").innerText = "Average Rating";
       renderTable(data.average_rating, [
-        "Game",
+        "Game ID",
         "Number of Reviews",
         "Total Rating",
       ]);
@@ -173,46 +163,51 @@
   }
 
   async function getAllGameList() {
-    let url = "/game_list";
+    let url = "/admin/game_list";
     try {
       let res = await fetch(url);
       checkStatus(res);
       let data = await res.json();
       id("dtHeader").innerText = "Game List";
-      renderTable(data.game_list, ["Account", "Game", "Group Name"]);
+      renderTable(data.game_list, ["Account ID", "Game ID", "Group Name"]);
     } catch (err) {
       handleError();
     }
   }
 
   async function getAllPlays() {
-    let url = "/plays";
+    let url = "/admin/plays";
     try {
       let res = await fetch(url);
       checkStatus(res);
       let data = await res.json();
       id("dtHeader").innerText = "Plays";
-      renderTable(data.plays, ["Account", "Game", "Hours Played"]);
+      renderTable(data.plays, ["Account ID", "Game ID", "Hours Played"]);
     } catch (err) {
       handleError();
     }
   }
 
   async function getAllReviews() {
-    let url = "/reviews";
+    let url = "/admin/reviews";
     try {
       let res = await fetch(url);
       checkStatus(res);
       let data = await res.json();
       id("dtHeader").innerText = "Reviews";
-      renderTable(data.reviews, ["Account", "Game", "Rating", "R Comment"]);
+      renderTable(data.reviews, [
+        "Account ID",
+        "Game ID",
+        "Rating",
+        "R Comment",
+      ]);
     } catch (err) {
       handleError();
     }
   }
 
   async function getAllVideoGames() {
-    let url = "/video_games";
+    let url = "/admin/video_games";
     try {
       let res = await fetch(url);
       checkStatus(res);

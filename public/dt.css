@@ -3,6 +3,8 @@
 }
 
 .dtHeader {
+  color: red;
+  text-shadow: 1px 1px black;
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -14,7 +16,31 @@ table {
   width: 100%;
 }
 
+th {
+  text-align: left;
+  color: blue;
+  text-shadow: 1px 1px blue;
+  padding: 5px;
+}
+
 td {
   border: 1px solid black;
   padding: 5px;
+}
+
+a {
+  background-color: green;
+  color: white;
+  padding: 3px 7px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+}
+
+button {
+  padding: 5px 10px;
+}
+
+form {
+  padding: 20px;
 }

@@ -9,9 +9,18 @@
 "use strict";
 
 const express = require("express");
+const multer = require("multer");
 const path = require("path");
-const fs = require("fs");
-const mysql = require("mysql");
+const { getDBConnection } = require("./db");
+
+const { postAdminCmd } = require("./admin-cmd");
+
+const { getAccounts, getAdminAccounts } = require("./accounts");
+const { getAverageRating, getAdminAverageRating } = require("./average-rating");
+const { getGameList, getAdminGameList } = require("./game-list");
+const { getPlays, getAdminPlays } = require("./plays");
+const { getReviews, getAdminReviews } = require("./reviews");
+const { getVideoGames, getAdminVideoGames } = require("./video-games");
 
 const app = express();
 const ERROR_400 = 400;
@@ -25,153 +34,110 @@ app.use(express.urlencoded({ extended: true })); // built-in middleware
 // for application/json
 app.use(express.json()); // built-in middleware
 
-/**
- * Establishes a database connection to the wpl database and returns the database object.
- * Any errors that occur during connection should be caught in the function
- * that calls this one.
- * @return {object} - The database object for the connection.
- */
-// host: "mysqlserver-css475.mysql.database.azure.com"
-// host: "20.231.252.32",
-function getDBConnection() {
-  var connection = mysql.createConnection({
-    host: "20.231.252.32",
-    port: "3306",
-    user: "DBJCSS475",
-    password: "CSS475ProjectYES123",
-    database: "gamebase",
-    ssl: {
-      ca: fs.readFileSync(__dirname + "/DigiCertGlobalRootCA.crt.pem"),
-    },
-  });
+// for multipart/form-data (required with FormData)
+app.use(multer().none()); // requires the "multer" module
 
-  connection.connect();
-  return connection;
-}
+app.post("/admin/admin-cmd", async (req, res) => {
+  try {
+    postAdminCmd(req, res);
+  } catch (error) {
+    res.status(ERROR_500).send();
+  }
+});
+
+app.get("/admin/accounts", async (req, res) => {
+  try {
+    getAdminAccounts(res);
+  } catch (error) {
+    res.status(ERROR_500).send();
+  }
+});
+
+app.get("/admin/average_rating", async (req, res) => {
+  try {
+    getAdminAverageRating(res);
+  } catch (error) {
+    res.status(ERROR_500).send();
+  }
+});
+
+app.get("/admin/game_list", async (req, res) => {
+  try {
+    getAdminGameList(res);
+  } catch (error) {
+    res.status(ERROR_500).send();
+  }
+});
+
+app.get("/admin/plays", async (req, res) => {
+  try {
+    getAdminPlays(res);
+  } catch (error) {
+    res.status(ERROR_500).send();
+  }
+});
+
+app.get("/admin/reviews", async (req, res) => {
+  try {
+    getAdminReviews(res);
+  } catch (error) {
+    res.status(ERROR_500).send();
+  }
+});
+
+app.get("/admin/video_games", async (req, res) => {
+  try {
+    getAdminVideoGames(res);
+  } catch (error) {
+    res.status(ERROR_500).send();
+  }
+});
 
 app.get("/accounts", async (req, res) => {
   try {
-    let qry = "select * from accounts";
-    const connection = getDBConnection();
-
-    connection.query(qry, function (error, results, fields) {
-      if (error) throw error;
-
-      // error could happen here
-      let result = {
-        accounts: results,
-      };
-      res.type("json");
-      res.json(result);
-    });
+    getAccounts(res);
   } catch (error) {
     res.status(ERROR_500).send();
-  } finally {
   }
 });
 
 app.get("/average_rating", async (req, res) => {
   try {
-    let qry = "select * from average_rating";
-    const connection = getDBConnection();
-
-    connection.query(qry, function (error, results, fields) {
-      if (error) throw error;
-
-      // error could happen here
-      let result = {
-        average_rating: results,
-      };
-      res.type("json");
-      res.json(result);
-    });
+    getAverageRating(res);
   } catch (error) {
     res.status(ERROR_500).send();
-  } finally {
   }
 });
 
 app.get("/game_list", async (req, res) => {
   try {
-    let qry = "select * from game_list";
-    const connection = getDBConnection();
-
-    connection.query(qry, function (error, results, fields) {
-      if (error) throw error;
-
-      // error could happen here
-      let result = {
-        game_list: results,
-      };
-      res.type("json");
-      res.json(result);
-    });
+    getGameList(res);
   } catch (error) {
     res.status(ERROR_500).send();
-  } finally {
   }
 });
 
 app.get("/plays", async (req, res) => {
   try {
-    let qry = "select * from plays";
-    const connection = getDBConnection();
-
-    connection.query(qry, function (error, results, fields) {
-      if (error) throw error;
-
-      // error could happen here
-      let result = {
-        plays: results,
-      };
-      res.type("json");
-      res.json(result);
-    });
+    getPlays(res);
   } catch (error) {
     res.status(ERROR_500).send();
-  } finally {
   }
 });
 
 app.get("/reviews", async (req, res) => {
   try {
-    let qry = "select * from reviews";
-    const connection = getDBConnection();
-
-    connection.query(qry, function (error, results, fields) {
-      if (error) throw error;
-
-      // error could happen here
-      let result = {
-        reviews: results,
-      };
-      res.type("json");
-      res.json(result);
-    });
+    getReviews(res);
   } catch (error) {
     res.status(ERROR_500).send();
-  } finally {
   }
 });
 
 app.get("/video_games", async (req, res) => {
   try {
-    let qry = "select * from video_games";
-    const connection = getDBConnection();
-
-    connection.query(qry, function (error, results, fields) {
-      if (error) throw error;
-
-      // error could happen here
-      let result = {
-        video_games: results,
-      };
-      res.type("json");
-      res.json(result);
-    });
+    getVideoGames(res);
   } catch (error) {
     res.status(ERROR_500).send();
-  } finally {
   }
 });
 

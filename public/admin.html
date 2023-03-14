@@ -8,40 +8,39 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="dt.css" />
-    <script src="script.js"></script>
-    <title>Game Base</title>
+    <script src="admin-script.js"></script>
+    <title>Game Base - Admin mode</title>
   </head>
 
   <body>
     <div class="side-nav">
-      <a href="#" id="home">Home</a>
+      <a href="#" id="admin">Admin</a>
       <a href="#" id="accounts">Accounts</a>
       <a href="#" id="average_rating">Average Rating</a>
       <a href="#" id="game_list">Game List</a>
       <a href="#" id="plays">Plays</a>
       <a href="#" id="reviews">Reviews</a>
       <a href="#" id="video_games">Video Games</a>
-      <a href="/admin.html" id="admin">Admin Page</a>
+      <a href="/index.html" id="home">Back to Home</a>
     </div>
 
     <div class="main">
-      <!-- Home -->
-      <section id="div-home" class="section">
-        <h2>Game Base - MySQL on Azure</h2>
-        <ul id="class-list">
-          <li>
-            CSS 475: Database Systems Final project<button id="cse475">
-              more info
-            </button>
-            <p>Team members:</p>
-            <ul>
-              <li>Dylan Law</li>
-              <li>Dylan Law</li>
-              <li>Dylan Law</li>
-            </ul>
-          </li>
-        </ul>
-        <p id="class-info"></p>
+      <!-- Admin -->
+      <section id="div-admin" class="section">
+        <h2>Game Base - Admin - Command line</h2>
+        <form id="adminForm">
+          <input
+            type="text"
+            name="sqlcommand"
+            size="200px"
+            placeholder="SQL command"
+          /><br />
+          <input type="submit" value="Submit" />
+          <br />
+          <p id="resultMessage"></p>
+        </form>
+        <hr />
+        <div id="adminDataTable"></div>
       </section>
 
       <section id="div-database" class="section">

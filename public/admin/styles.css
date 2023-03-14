@@ -39,7 +39,7 @@ ul {
 
 /* Sections */
 .section {
-  display: none;
+  display: block;
 }
 
 .show {
@@ -105,6 +105,10 @@ ul {
 /* Favorites */
 .favorite-img {
   width: 700px;
+}
+
+form {
+  padding: 20px;
 }
 
 /* Ref: https://www.w3schools.com/css/css_rwd_mediaqueries.asp */
