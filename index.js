@@ -1,10 +1,4 @@
 /*
- * Name: Dylan Law
- * Date: April 20, 2020
- * Section: CSE 154 AL
- *
- * This is the server sided JS for the Node.js web service
- * for Homework 4 - Bestreads
  */
 "use strict";
 

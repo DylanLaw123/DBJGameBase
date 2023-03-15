@@ -2,7 +2,7 @@ const { getDBConnection } = require("./db");
 
 function getAverageRating(res) {
   let qry =
-    "select Title, num_reviews, total_rating from average_rating inner join video_games on average_rating.Game_id = video_games.Game_id";
+    "SELECT Title, num_reviews, ROUND(total_rating / num_reviews, 1) AS Average_Rating FROM AVERAGE_RATING A, VIDEO_GAMES V WHERE A.Game_id = V.Game_id;";
   const connection = getDBConnection();
 
   connection.query(qry, function (error, results, fields) {

@@ -162,7 +162,7 @@
       renderTable(data.average_rating, [
         "Game",
         "Number of Reviews",
-        "Total Rating",
+        "Average Rating",
       ]);
     } catch (err) {
       handleError();
