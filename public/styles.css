@@ -66,7 +66,7 @@ ul {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 20px;
-  color: #818181;
+  color: #e9e3e3;
   display: block;
   border: none;
   background: none;
@@ -77,6 +77,37 @@ ul {
 }
 
 .side-nav a:hover {
+  color: #f1f1f1;
+  background-color: #121481;
+}
+
+.admin-side-nav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(1, 59, 10);
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.admin-side-nav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #e9e3e3;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+.admin-side-nav a:hover {
   color: #f1f1f1;
   background-color: #121481;
 }

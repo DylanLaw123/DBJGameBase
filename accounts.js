@@ -1,7 +1,8 @@
 const { getDBConnection } = require("./db");
 
 function getAccounts(res) {
-  let qry = "select * from accounts";
+  let qry =
+    "select Account_id, Name, date_format(Date_Created, '%Y-%m-%d'), Email from accounts";
   const connection = getDBConnection();
   connection.query(qry, function (error, results, fields) {
     if (error) {
@@ -18,7 +19,8 @@ function getAccounts(res) {
 }
 
 function getAdminAccounts(res) {
-  let qry = "select * from accounts";
+  let qry =
+    "select Account_id, Name, date_format(Date_Created, '%Y-%m-%d'), Email from accounts";
   const connection = getDBConnection();
   connection.query(qry, function (error, results, fields) {
     if (error) {

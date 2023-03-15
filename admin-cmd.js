@@ -15,6 +15,7 @@ function postAdminCmd(req, res) {
   connection.query(sqlcommand, function (error, results, fields) {
     if (error) {
       console.log("Errors occurs");
+      console.log(error);
     }
 
     // error could happen here

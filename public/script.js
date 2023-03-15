@@ -81,7 +81,7 @@
     id("cse475").addEventListener(
       "click",
       function () {
-        moreClassInfo();
+        createAccount();
       },
       false
     );
@@ -100,11 +100,8 @@
     document.getElementById(content).classList.add("show");
   }
 
-  function moreClassInfo() {
-    let element = id("class-info");
-    element.innerText =
-      "This would link to a page that would have information on account creation";
-    element.classList.add("class-info-high-light");
+  function createAccount() {
+    window.location.href = "/admin/accounts.html";
   }
 
   function renderTable(data, header) {
